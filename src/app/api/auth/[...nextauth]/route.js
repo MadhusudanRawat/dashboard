@@ -7,7 +7,6 @@ import User from "../../../../models/User";
 
 export const authOptions = {
   // Configure one or more authentication providers
-  secret: "JKJLSKDJFLKJSDKF",
   providers: [
     CredentialsProvider({
       id: "credentials",

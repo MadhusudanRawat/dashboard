@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
 
 export default function SignupPage() {
 
@@ -115,27 +116,16 @@ export default function SignupPage() {
           />
         </LabelInputContainer>
 
-        <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-          type="submit"
-        >
+        <Button variant="gradient" size="lg" type="submit">
           Sign up &rarr;
-          <BottomGradient />
-        </button>
+        </Button>
+
       </form>
       <p className="flex justify-center">You already have an account? {" "}<a href="/" className="font-bold hover:text-blue-500 duration-200"> Login</a></p>
     </div>
   );
 }
 
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
-  );
-};
 
 const LabelInputContainer = ({ children, className }: any) => {
   return (

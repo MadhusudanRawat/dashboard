@@ -22,113 +22,7 @@ import {
 } from "@/components/ui/table"
 
 
-// const tableData = [
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   },
-//   {
-//     col1: "Column 1 Data",
-//     col2: "Column 2 Data",
-//     col3: "Column 3 Data",
-//     col4: "Column 4 Data",
-//     col5: "Column 5 Data",
-//   }
-// ]
+
 import toast from "react-hot-toast";
 
 import { useEffect } from "react";
@@ -160,7 +54,6 @@ export default function DashboardPage() {
   }, [status, router]); // Only run effect when session status changes
 
   if (status === "loading") {
-    toast.loading('Loading...');
     // Optionally, you can show a loading indicator while the session is being fetched
     return <div>Loading...</div>;
   }
@@ -222,21 +115,21 @@ export default function DashboardPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="">Row 1</TableHead>
-                    <TableHead>Row 2</TableHead>
-                    <TableHead>Row 3</TableHead>
-                    <TableHead className="">Row 4</TableHead>
-                    <TableHead className="">Row 5</TableHead>
+                    <TableHead className="">Id</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Username</TableHead>
+                    <TableHead className="">Email</TableHead>
+                    <TableHead className="">PhoneNumber</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {tableData.map((table: any) => (
                     <TableRow key={table?.id}>
-                      <TableCell className="font-medium">{table?.col1}</TableCell>
-                      <TableCell>{table.col2}</TableCell>
-                      <TableCell>{table.col3}</TableCell>
-                      <TableCell className="">{table.col4}</TableCell>
-                      <TableCell className="">{table.col5}</TableCell>
+                      <TableCell className="font-medium">{table?.id}</TableCell>
+                      <TableCell>{table.date}</TableCell>
+                      <TableCell>{table.username}</TableCell>
+                      <TableCell className="">{table.email}</TableCell>
+                      <TableCell className="">{table.phoneNumber}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

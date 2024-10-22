@@ -16,6 +16,8 @@ export default function SignupPage() {
     phoneNumber: "",
     password: "",
   });
+  const [error, setError] = useState<string | null>(null); // Error state
+
 
   const router = useRouter();
 
@@ -30,24 +32,29 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    toast.loading("Loading...")
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),  // Send formData
+      body: JSON.stringify(formData),
     });
-
-    if (res.ok) {
-      const result = await res.json();
-      toast.success("Signup successfully");
-      router.push("/");
-
-    } else {
-      toast.error("Please Provide all required information");
-      console.error("Signup failed.");
+    const result = await res.json();
+    if (!result) {
+      toast.dismiss()
+      setError("There is some server issue"); // Show error
+      return;
     }
+    if (res.ok && result.success) {
+      toast.dismiss()
+      // setError(result.message); // Show error
+      router.push("/");
+    } else {
+      toast.dismiss()
+      setError(result.message); // Show error
+    }
+
   };
 
 
@@ -115,7 +122,13 @@ export default function SignupPage() {
             onChange={handleInputChange}  // Capture input change
           />
         </LabelInputContainer>
-
+        {error && (
+          <div className="flex justify-center p-2">
+            <p className="text-red-500 text-1xl font-semibold">
+              {error}
+            </p>
+          </div>
+        )}
         <Button variant="gradient" size="lg" type="submit">
           Sign up &rarr;
         </Button>
